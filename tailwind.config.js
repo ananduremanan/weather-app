@@ -1,5 +1,5 @@
 const config = {
-  content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'],
+  content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}', "./node_modules/flowbite-svelte-icons/**/*.{html,js,svelte,ts}",],
 
   plugins: [require('flowbite/plugin')],
 
@@ -21,6 +21,9 @@ const config = {
           800: '#CC4522',
           900: '#A5371B'
         }
+      },
+      backgroundImage: {
+        'sunny': "url('/imgages/sunny.svg')",
       }
     }
   }
