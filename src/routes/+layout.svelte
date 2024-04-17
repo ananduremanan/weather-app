@@ -3,11 +3,13 @@
 	import '../app.css';
 	import Dashboard from './Dashboard.svelte';
 	import { onMount } from 'svelte';
+	import { chartOptions } from '$lib';
 
 	let weather_details: any;
 	let weather_data: any;
 	let forecast: any;
 	let is_Fetching: boolean = false;
+	let forecastChartOptions: any;
 
 	const getDay = (dateString: string) => {
 		const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -45,11 +47,17 @@
 			temperature: weather_details.current.temp_c,
 			condition: weather_details.current.condition.text,
 			last_updated: weather_details.current.last_updated.slice(0, 10),
-			is_day: weather_details.current.is_day
+			is_day: weather_details.current.is_day,
+			humidity: weather_details.current.humidity,
+			wind: weather_details.current.wind_kph,
+			icon: weather_details.current.condition.icon
 		};
 
-		forecast = { day_temp: weather_details.forecast.forecastday[0].hour };
-
+		forecast = {
+			day_temp: weather_details.forecast.forecastday[0].hour,
+			day_overall: weather_details.forecast.forecastday[0].day
+		};
+		forecastChartOptions = chartOptions(forecast.day_temp);
 		console.log(forecast);
 	};
 
@@ -63,7 +71,11 @@
 	};
 </script>
 
-<main class="p-4">
-	<Navbar on:loc_set={handleLocationSet} />
-	<Dashboard {weather_data} {is_Fetching} {forecast} />
-</main>
+{#if weather_data}
+	<main
+		class={`${weather_data.is_day === 1 ? '' : 'bg-gradient-to-r from-black to-blue-900'} p-4 h-screen`}
+	>
+		<Navbar on:loc_set={handleLocationSet} />
+		<Dashboard {weather_data} {is_Fetching} {forecast} {forecastChartOptions} />
+	</main>
+{/if}
