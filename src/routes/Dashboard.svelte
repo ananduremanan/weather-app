@@ -21,7 +21,7 @@
 	{#if weather_data}
 		<div class="flex flex-col md:flex-row gap-4 w-full mt-8">
 			<div
-				class="h-96 bg-cover bg-no-repeat p-10 rounded-3xl md:w-3/5 shadow-md"
+				class="h-96 bg-cover bg-no-repeat p-10 rounded-3xl md:w-3/5 shadow-lg"
 				style="background-image: url({check_bg(weather_data && weather_data.is_day)})"
 			>
 				{#if is_Fetching}
@@ -47,7 +47,7 @@
 			</div>
 
 			<div
-				class="relative h-96 bg-cover bg-no-repeat p-6 rounded-3xl md:w-2/5 shadow-md"
+				class="relative h-96 bg-cover bg-no-repeat p-6 rounded-3xl md:w-2/5 shadow-lg"
 				style="background-image: url({check_bg(weather_data && weather_data.is_day)})"
 			>
 				{#if is_Fetching}

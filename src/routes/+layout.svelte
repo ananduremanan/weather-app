@@ -1,4 +1,6 @@
 <script lang="ts">
+	export const prerender = true;
+	export const ssr = false;
 	import Navbar from '$lib/NavBar.svelte';
 	import '../app.css';
 	import Dashboard from './Dashboard.svelte';
@@ -73,7 +75,7 @@
 
 {#if weather_data}
 	<main
-		class={`${weather_data.is_day === 1 ? '' : 'bg-gradient-to-r from-black to-blue-900'} p-4 h-screen`}
+		class={`${weather_data.is_day === 1 ? 'bg-gradient-to-r from-white to-yellow-100' : 'bg-gradient-to-r from-black to-blue-900'} p-4 h-screen`}
 	>
 		<Navbar on:loc_set={handleLocationSet} />
 		<Dashboard {weather_data} {is_Fetching} {forecast} {forecastChartOptions} />
