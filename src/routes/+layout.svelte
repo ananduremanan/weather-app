@@ -11,7 +11,6 @@
 	let weather_data: any;
 	let forecast: any;
 	let is_Fetching: boolean = false;
-	let forecastChartOptions: any;
 
 	const getDay = (dateString: string) => {
 		const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -40,7 +39,10 @@
 	const fetchWeatherDetails = async (location: string) => {
 		localStorage.setItem('default', JSON.stringify({ default_loc: 'kochi' }));
 		weather_details = await getWeather(location);
-		console.log(weather_details);
+
+		forecast = {
+			day_overall: weather_details.forecast.forecastday[0].day
+		};
 
 		weather_data = {
 			day: getDay(weather_details.location.localtime),
@@ -52,15 +54,9 @@
 			is_day: weather_details.current.is_day,
 			humidity: weather_details.current.humidity,
 			wind: weather_details.current.wind_kph,
-			icon: weather_details.current.condition.icon
+			icon: weather_details.current.condition.icon,
+			forecastChartOptions: chartOptions(weather_details.forecast.forecastday[0].hour)
 		};
-
-		forecast = {
-			day_temp: weather_details.forecast.forecastday[0].hour,
-			day_overall: weather_details.forecast.forecastday[0].day
-		};
-		forecastChartOptions = chartOptions(forecast.day_temp);
-		console.log(forecast);
 	};
 
 	onMount(() => {
@@ -78,6 +74,6 @@
 		class={`${weather_data.is_day === 1 ? 'bg-gradient-to-r from-white to-yellow-100' : 'bg-gradient-to-r from-black to-blue-900'} p-4 h-screen`}
 	>
 		<Navbar on:loc_set={handleLocationSet} />
-		<Dashboard {weather_data} {is_Fetching} {forecast} {forecastChartOptions} />
+		<Dashboard {weather_data} {is_Fetching} {forecast} />
 	</main>
 {/if}

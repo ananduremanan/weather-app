@@ -2,7 +2,6 @@
 	export let weather_data: any;
 	export let is_Fetching: boolean;
 	export let forecast: any;
-	export let forecastChartOptions: any;
 
 	import { Skeleton, Chart, Indicator } from 'flowbite-svelte';
 
@@ -52,19 +51,16 @@
 			>
 				{#if is_Fetching}
 					<Skeleton class="w-full" />
-				{:else if forecastChartOptions}
-					<Chart options={forecastChartOptions && forecastChartOptions} class="w-full -mt-8" />
+				{:else if weather_data}
+					<Chart options={weather_data.forecastChartOptions} class="w-full -mt-8" />
 					<div class="absolute top-6 right-16">
 						<p>Forecast</p>
-
-						{#if weather_data}
-							<div class="text-xs flex items-center gap-1">
-								<Indicator color="red" size="xs" />Humidity: {weather_data.humidity}
-							</div>
-							<div class="text-xs flex items-center gap-1">
-								<Indicator color="blue" size="xs" />Wind: {weather_data.wind} Kph
-							</div>
-						{/if}
+						<div class="text-xs flex items-center gap-1">
+							<Indicator color="red" size="xs" />Humidity: {weather_data.humidity}
+						</div>
+						<div class="text-xs flex items-center gap-1">
+							<Indicator color="blue" size="xs" />Wind: {weather_data.wind} Kph
+						</div>
 					</div>
 				{/if}
 			</div>
