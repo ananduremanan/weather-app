@@ -11,6 +11,7 @@
 		if (searchInput != '') {
 			localStorage.setItem('user_loc', JSON.stringify({ default_loc: searchInput }));
 			dispatch('loc_set', { location: searchInput });
+			searchInput = '';
 		}
 	};
 
