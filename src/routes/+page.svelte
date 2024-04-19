@@ -1,6 +1,4 @@
 <script lang="ts">
-	export const prerender = true;
-	export const ssr = false;
 	import Navbar from '$lib/NavBar.svelte';
 	import '../app.css';
 	import Dashboard from '../lib/Dashboard.svelte';
