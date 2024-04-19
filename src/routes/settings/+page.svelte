@@ -5,6 +5,7 @@
 	import Rust from '$lib/icons/Rust.svelte';
 	import Svelte from '$lib/icons/Svelte.svelte';
 	import Tailwind from '$lib/icons/Tailwind.svelte';
+	import { open } from '@tauri-apps/api/shell';
 
 	const is_day = $page.url.searchParams.get('is_day');
 </script>
@@ -31,6 +32,19 @@
 				<Rust color={is_day === '1' ? 'black' : 'white'} />
 				<Svelte color={is_day === '1' ? 'black' : 'white'} />
 				<Tailwind color={is_day === '1' ? 'black' : 'white'} />
+			</div>
+			<div class="mt-4">Icon Credit</div>
+			<div class="mt-2">
+				<!-- <a
+					href="https://www.flaticon.com/free-icons/weather-app"
+					title="weather app icons"
+					target="_blank">Weather app icons created by Freepik - Flaticon</a
+				> -->
+				<button
+					on:click={() => {
+						open('https://www.flaticon.com/free-icons/weather-app');
+					}}>Weather app icons created by Freepik - Flaticon</button
+				>
 			</div>
 		</div>
 
