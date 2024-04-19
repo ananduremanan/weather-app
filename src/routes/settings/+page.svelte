@@ -1,9 +1,17 @@
-<script>
+<script lang="ts">
 	import { AngleLeftOutline } from 'flowbite-svelte-icons';
 	import { Radio } from 'flowbite-svelte';
+	import { page } from '$app/stores';
+	import Rust from '$lib/icons/Rust.svelte';
+	import Svelte from '$lib/icons/Svelte.svelte';
+	import Tailwind from '$lib/icons/Tailwind.svelte';
+
+	const is_day = $page.url.searchParams.get('is_day');
 </script>
 
-<section class="p-4">
+<section
+	class={`${is_day === '1' ? 'bg-gradient-to-r from-white to-yellow-100 text-black' : 'bg-gradient-to-r from-black to-blue-900 text-white'} p-4 min-h-screen`}
+>
 	<a href="/">
 		<div class="flex items-center gap-2 cursor-pointer">
 			<AngleLeftOutline />
@@ -13,21 +21,17 @@
 
 	<div class="p-6">
 		<div class="text-lg">Options</div>
-		<div class="mt-4">Choose a theme</div>
-		<ul class="mt-4">
-			<li class="flex gap-2"><Radio />System</li>
-			<li class="flex gap-2"><Radio />Dark</li>
-			<li class="flex gap-2"><Radio />Light</li>
-		</ul>
+		<div class="mt-4">Notification Settings</div>
+		<div class="flex gap-1 mt-4"><Radio /> Show Notifictaion</div>
 
 		<div class="text-lg mt-8">Credits</div>
 		<div class="text-sm">
 			<div class="mt-4">Built With Tauri and Svelte-Kit</div>
-            <div class="flex gap-2 mt-4">
-                <img src="/icons/rust.svg" alt="rust" class="w-10">
-                <img src="/icons/svelte.svg" alt="rust" class="w-8">
-                <img src="/icons/tailwind.svg" alt="rust" class="w-10">
-            </div>
+			<div class="flex gap-2 mt-4">
+				<Rust color={is_day === '1' ? 'black' : 'white'} />
+				<Svelte color={is_day === '1' ? 'black' : 'white'} />
+				<Tailwind color={is_day === '1' ? 'black' : 'white'} />
+			</div>
 		</div>
 
 		<div class="text-lg mt-8">About</div>

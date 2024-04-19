@@ -65,7 +65,7 @@
 					<div
 						class={`${weather_data.is_day ? 'text-black' : 'text-white'} absolute top-6 right-16`}
 					>
-						<p>Forecast</p>
+						<p>Forecast Today</p>
 						<div class="text-xs flex items-center gap-1">
 							<Indicator color="red" size="xs" />Humidity: {weather_data.humidity}
 						</div>
@@ -76,23 +76,25 @@
 				{/if}
 			</div>
 		</div>
-	{/if}
 
-	<SpeedDial defaultClass="absolute end-6 bottom-6">
-		<DotsHorizontalOutline slot="icon" class="w-8 h-8" />
-		<SpeedDialButton name="Share">
-			<ShareNodesSolid class="w-6 h-6" />
-		</SpeedDialButton>
-		<SpeedDialButton
-			name="Print"
-			on:click={() => {
-				window.print();
-			}}
-		>
-			<PrinterSolid class="w-6 h-6" />
-		</SpeedDialButton>
-		<SpeedDialButton name="Settings">
-			<a href="/settings"><AdjustmentsHorizontalSolid class="w-6 h-6" /></a>
-		</SpeedDialButton>
-	</SpeedDial>
+		<SpeedDial defaultClass="fixed end-6 bottom-6 print:hidden">
+			<DotsHorizontalOutline slot="icon" class="w-8 h-8" />
+			<SpeedDialButton name="Share">
+				<ShareNodesSolid class="w-6 h-6" />
+			</SpeedDialButton>
+			<SpeedDialButton
+				name="Print"
+				on:click={() => {
+					window.print();
+				}}
+			>
+				<PrinterSolid class="w-6 h-6" />
+			</SpeedDialButton>
+			<SpeedDialButton name="Settings">
+				<a href="/settings?is_day={weather_data.is_day}"
+					><AdjustmentsHorizontalSolid class="w-6 h-6" /></a
+				>
+			</SpeedDialButton>
+		</SpeedDial>
+	{/if}
 </section>

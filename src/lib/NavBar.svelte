@@ -28,7 +28,7 @@
 	};
 </script>
 
-<nav class="flex gap-2">
+<nav class="flex gap-2 print:hidden">
 	<div class="ml-auto relative">
 		<Search
 			size="sm"
