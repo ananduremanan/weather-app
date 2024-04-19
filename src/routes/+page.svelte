@@ -3,15 +3,18 @@
 	export const ssr = false;
 	import Navbar from '$lib/NavBar.svelte';
 	import '../app.css';
-	import Dashboard from './Dashboard.svelte';
+	import Dashboard from '../lib/Dashboard.svelte';
 	import { onMount } from 'svelte';
 	import { chartOptions } from '$lib';
+	import { invoke } from '@tauri-apps/api/tauri';
+	import CurrentLoc from '$lib/CurrentLoc.svelte';
 
 	let weather_details: any;
 	let weather_data: any;
 	let forecast: any;
 	let is_Fetching: boolean = false;
 	let key: number = 0;
+	let ip_user: string;
 
 	const getDay = (dateString: string) => {
 		const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -63,9 +66,15 @@
 		key += 1; // Key is For Force Re-Rendering Chart Component
 	};
 
+	const get_ip = async () => {
+		const ip_user_addr: any = await invoke('get_user_ip');
+		ip_user = ip_user_addr;
+	};
+
 	onMount(() => {
 		const location = getLocation();
 		fetchWeatherDetails(location);
+		get_ip();
 	});
 
 	const handleLocationSet = (event: any) => {
@@ -79,5 +88,6 @@
 	>
 		<Navbar on:loc_set={handleLocationSet} />
 		<Dashboard {weather_data} {is_Fetching} {forecast} {key} />
+		<CurrentLoc {ip_user} is_day={weather_data.is_day} />
 	</main>
 {/if}
