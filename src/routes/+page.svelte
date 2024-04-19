@@ -48,8 +48,6 @@
 			day_overall: weather_details.forecast.forecastday[0].day
 		};
 
-		console.log(weather_details);
-
 		weather_data = {
 			day: getDay(weather_details.location.localtime),
 			date: weather_details.location.localtime.slice(0, 10),

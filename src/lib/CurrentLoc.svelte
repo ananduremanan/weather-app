@@ -11,8 +11,6 @@
 	const getUserLocation = async () => {
 		try {
 			is_Fetching = true;
-			console.log(ip_user);
-
 			const res = await fetch(`${import.meta.env.VITE_IP_API}${ip_user}`);
 			const info = await res.json();
 			location = info.error.message;
