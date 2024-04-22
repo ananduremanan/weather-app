@@ -35,11 +35,6 @@
 			</div>
 			<div class="mt-4">Icon Credit</div>
 			<div class="mt-2">
-				<!-- <a
-					href="https://www.flaticon.com/free-icons/weather-app"
-					title="weather app icons"
-					target="_blank">Weather app icons created by Freepik - Flaticon</a
-				> -->
 				<button
 					on:click={() => {
 						open('https://www.flaticon.com/free-icons/weather-app');

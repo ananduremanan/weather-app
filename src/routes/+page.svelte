@@ -46,6 +46,8 @@
 			day_overall: weather_details.forecast.forecastday[0].day
 		};
 
+		console.log(weather_details);
+
 		weather_data = {
 			day: getDay(weather_details.location.localtime),
 			date: weather_details.location.localtime.slice(0, 10),
@@ -57,7 +59,8 @@
 			humidity: weather_details.current.humidity,
 			wind: weather_details.current.wind_kph,
 			icon: weather_details.current.condition.icon,
-			forecastChartOptions: chartOptions(weather_details.forecast.forecastday[0].hour)
+			forecastChartOptions: chartOptions(weather_details.forecast.forecastday[0].hour),
+			astro: weather_details.forecast.forecastday[0].astro
 		};
 		key += 1; // Key is For Force Re-Rendering Chart Component
 	};

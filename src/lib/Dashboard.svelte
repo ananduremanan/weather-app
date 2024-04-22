@@ -77,6 +77,16 @@
 			</div>
 		</div>
 
+		<div
+			class={`${weather_data.is_day ? 'text-black' : 'text-white'} px-10 py-8 bg-white inline-block rounded-3xl mt-4 shadow-lg`}
+			style="background-image: url({check_bg(weather_data && weather_data.is_day, true)})"
+		>
+			<img src="/images/sunrise.svg" class="w-8 h-8" alt="" />
+			<div>Sunrise Details</div>
+			<div class="mt-4">Sunrise: {weather_data.astro.sunrise}</div>
+			<div>Sunset: {weather_data.astro.sunset}</div>
+		</div>
+
 		<SpeedDial defaultClass="fixed end-6 bottom-6 print:hidden">
 			<DotsHorizontalOutline slot="icon" class="w-8 h-8" />
 			<SpeedDialButton name="Share">
