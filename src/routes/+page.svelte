@@ -60,7 +60,9 @@
 			wind: weather_details.current.wind_kph,
 			icon: weather_details.current.condition.icon,
 			forecastChartOptions: chartOptions(weather_details.forecast.forecastday[0].hour),
-			astro: weather_details.forecast.forecastday[0].astro
+			astro: weather_details.forecast.forecastday[0].astro,
+			dayOverView: weather_details.forecast.forecastday[0].day,
+			localTime: weather_details.location.localtime
 		};
 		key += 1; // Key is For Force Re-Rendering Chart Component
 	};

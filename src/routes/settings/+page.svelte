@@ -36,9 +36,19 @@
 			<div class="mt-4">Icon Credit</div>
 			<div class="mt-2">
 				<button
+					class="underline"
 					on:click={() => {
 						open('https://www.flaticon.com/free-icons/weather-app');
 					}}>Weather app icons created by Freepik - Flaticon</button
+				>
+			</div>
+			<div class="mt-4">API Credit</div>
+			<div class="mt-2">
+				<button
+					class="underline"
+					on:click={() => {
+						open('https://www.weatherapi.com/');
+					}}>Weather Details API By https://www.weatherapi.com/</button
 				>
 			</div>
 		</div>

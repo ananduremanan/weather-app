@@ -77,14 +77,56 @@
 			</div>
 		</div>
 
-		<div
-			class={`${weather_data.is_day ? 'text-black' : 'text-white'} px-10 py-8 bg-white inline-block rounded-3xl mt-4 shadow-lg`}
-			style="background-image: url({check_bg(weather_data && weather_data.is_day, true)})"
-		>
-			<img src="/images/sunrise.svg" class="w-8 h-8" alt="" />
-			<div>Sunrise Details</div>
-			<div class="mt-4">Sunrise: {weather_data.astro.sunrise}</div>
-			<div>Sunset: {weather_data.astro.sunset}</div>
+		<div class="flex flex-wrap gap-4 mt-4">
+			<div
+				class={`${weather_data.is_day ? 'text-black' : 'text-white'} px-10 py-8 bg-white inline-block rounded-3xl shadow-lg`}
+				style="background-image: url({check_bg(weather_data && weather_data.is_day, true)})"
+			>
+				{#if is_Fetching}
+					<Skeleton class="w-full" />
+				{:else}
+					<img src="/images/sunrise.svg" class="w-8 h-8" alt="" />
+					<div>Sunrise Details</div>
+					<div class="mt-4">Sunrise: {weather_data.astro.sunrise}</div>
+					<div>Sunset: {weather_data.astro.sunset}</div>
+				{/if}
+			</div>
+
+			<div
+				class={`${weather_data.is_day ? 'text-black' : 'text-white'} px-10 py-8 bg-white inline-block rounded-3xl shadow-lg`}
+				style="background-image: url({check_bg(weather_data && weather_data.is_day, true)})"
+			>
+				{#if is_Fetching}
+					<Skeleton class="w-full" />
+				{:else}
+					<img src="/images/sunrise.svg" class="w-8 h-8" alt="" />
+					<div>Summary</div>
+					<div class="mt-4 flex flex-col md:flex-row gap-4">
+						<div>
+							<div>Average Humidity : {weather_data.dayOverView.avghumidity}</div>
+							<div>Average Temperature : {weather_data.dayOverView.avgtemp_c}</div>
+						</div>
+						<div>
+							<div>Max Temperature : {weather_data.dayOverView.maxtemp_c}</div>
+							<div>Min Temperature : {weather_data.dayOverView.mintemp_c}</div>
+						</div>
+					</div>
+				{/if}
+			</div>
+
+			<div
+				class={`${weather_data.is_day ? 'text-black' : 'text-white'} px-10 py-8 bg-white inline-block rounded-3xl shadow-lg`}
+				style="background-image: url({check_bg(weather_data && weather_data.is_day, true)})"
+			>
+				{#if is_Fetching}
+					<Skeleton class="w-full" />
+				{:else}
+					<div class="flex flex-col text-6xl items-left justify-center h-full">
+						<span class="text-xs">Local Time</span>
+						{weather_data.localTime.slice(10)}
+					</div>
+				{/if}
+			</div>
 		</div>
 
 		<SpeedDial defaultClass="fixed end-6 bottom-6 print:hidden">
