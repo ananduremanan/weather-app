@@ -122,8 +122,9 @@
 					<Skeleton class="w-full" />
 				{:else}
 					<div class="flex flex-col text-6xl items-left justify-center h-full">
-						<span class="text-xs">Local Time</span>
-						{weather_data.localTime.slice(10)}
+						<span class="text-xs">Local Time Zone</span>
+						<!-- {weather_data.localTime.slice(10)} -->
+						<span class="text-xs">Data Not Available</span>
 					</div>
 				{/if}
 			</div>

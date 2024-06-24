@@ -33,7 +33,7 @@
 		<div class="flex items-center gap-2">
 			<Indicator color="green" size="xs" />
 			<span class="whitespace-nowrap text-xs"
-				>Location : {#if is_Fetching}
+				>Your Location : {#if is_Fetching}
 					<Spinner size="4" />
 				{:else}
 					{location}
